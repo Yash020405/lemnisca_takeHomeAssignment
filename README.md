@@ -34,7 +34,7 @@ flowchart LR
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Yash020405/lemnisca_takeHomeAssignment.git
 cd lemnisca_takeHomeAssignment
 ```
 
@@ -141,7 +141,7 @@ Check the debug panel on the right side to see:
 
 ## Demo Video
 
-🎥 **[Watch Demo Video](https://www.loom.com/share/2889cf67e8534bc1b737ba3d15de87bd)**
+**[Watch Demo Video](https://www.loom.com/share/2889cf67e8534bc1b737ba3d15de87bd)**
 
 See the chatbot in action: routing logic, hybrid retrieval, streaming responses, and evaluation in a 5-minute walkthrough.
 
@@ -186,7 +186,6 @@ lemnisca_takeHomeAssignment/
 │   ├── style.css
 │   └── app.js
 ├── docs/                           # 30 ClearPath PDFs
-├── Dockerfile
 ├── written_answers.md
 └── README.md
 ```
