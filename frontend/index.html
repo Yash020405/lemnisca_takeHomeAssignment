@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearPath Support</title>
+    <meta name="description"
+        content="ClearPath AI-powered customer support chatbot. Get instant answers from our documentation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="chat-header">
+            <div class="header-left">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="14" stroke="url(#grad1)" stroke-width="2.5" />
+                        <path d="M10 16 L14 20 L22 12" stroke="url(#grad1)" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <defs>
+                            <linearGradient id="grad1" x1="0" y1="0" x2="32" y2="32">
+                                <stop offset="0%" style="stop-color:#6366f1" />
+                                <stop offset="100%" style="stop-color:#a855f7" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="header-info">
+                    <h1>ClearPath Support</h1>
+                    <span class="status-badge">
+                        <span class="status-dot"></span>
+                        Online
+                    </span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="toggleDebug" class="icon-btn" title="Toggle debug panel">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                </button>
+                <button id="newChat" class="icon-btn" title="New conversation">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div id="messages" class="messages">
+                    <!-- Welcome message -->
+                    <div class="message bot-message fade-in">
+                        <div class="message-avatar">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <p>Welcome to <strong>ClearPath Support</strong>!</p>
+                                <p>I can help you with questions about ClearPath, our project management platform. Ask
+                                    me about features, pricing, integrations, troubleshooting, and more.</p>
+                                <div class="suggestion-chips">
+                                    <button class="chip" onclick="askQuestion('What are the pricing plans?')">Pricing
+                                        plans</button>
+                                    <button class="chip"
+                                        onclick="askQuestion('How do I get started with ClearPath?')">Getting
+                                        started</button>
+                                    <button class="chip"
+                                        onclick="askQuestion('What integrations are available?')">Integrations</button>
+                                    <button class="chip"
+                                        onclick="askQuestion('How do I set up custom workflows?')">Custom
+                                        workflows</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <div class="input-container">
+                        <textarea id="queryInput" placeholder="Ask a question about ClearPath..." rows="1"
+                            autocomplete="off"></textarea>
+                        <div class="input-actions">
+                            <label class="stream-toggle" title="Toggle streaming mode">
+                                <input type="checkbox" id="streamToggle" checked>
+                                <span class="toggle-label">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                    </svg>
+                                    Stream
+                                </span>
+                            </label>
+                            <button id="sendBtn" class="send-btn" title="Send message">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Debug Panel -->
+            <aside id="debugPanel" class="debug-panel">
+                <div class="debug-header">
+                    <h3>Debug Info</h3>
+                    <button id="closeDebug" class="icon-btn-sm" title="Close">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="debugContent" class="debug-content">
+                    <div class="debug-empty">
+                        <p>Send a message to see debug information.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
